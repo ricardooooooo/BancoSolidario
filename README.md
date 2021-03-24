@@ -9,7 +9,7 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 
 ## Requísitos de Aplicação
 ### Requisíto Mínimo
-* Por definir
+* Logins
 * Por definir
 * Por definir
 
