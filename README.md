@@ -19,6 +19,6 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 * Por definir
 
 ## Lista de Tarefas
-1. Tarefa - [x] - concluída
-2. Tarefa - [ ] - por realizar
+1. Criar base de dados local - [ ] - por realizar
+2. Tarefa - [x] - concluída
 3. Tarefa - [ ] - por realizar
