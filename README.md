@@ -10,13 +10,17 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 ## Requísitos de Aplicação
 ### Requisíto Mínimo
 * Logins;
+* Criar um "home page"
+* Ver as Familias existentes;
+* Ver as empresas;
+* Ver as doações já efetuadas;
 * Pedido de doação por parte do user;
-* Por definir
+* Editar as doações por pedido;
 
 ## Requisíto Avançado
-* Por definir
-* Por definir
-* Por definir
+* Aceitar esse pedido sendo monitor local.
+* Editar as familias
+* Editar as Empresas
 
 ## Lista de Tarefas
 1. Criar base de dados local - [ ] - por realizar
