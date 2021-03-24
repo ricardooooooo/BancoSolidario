@@ -9,8 +9,8 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 
 ## Requísitos de Aplicação
 ### Requisíto Mínimo
-* Logins
-* Por definir
+* Logins;
+* Pedido de doação por parte do user;
 * Por definir
 
 ## Requisíto Avançado
