@@ -20,5 +20,6 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 
 ## Lista de Tarefas
 1. Criar base de dados local - [ ] - por realizar
+2. Criar uma main page de menus - [ ] - por realizar
 2. Tarefa - [x] - concluída
 3. Tarefa - [ ] - por realizar
