@@ -15,12 +15,12 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 * Ver as empresas;
 * Ver as doações já efetuadas;
 * Pedido de doação por parte do user;
-* Editar as doações por pedido;
 
 ## Requisíto Avançado
 * Aceitar esse pedido sendo monitor local.
 * Editar as familias
 * Editar as Empresas
+* Editar as doações por pedido;
 
 ## Lista de Tarefas
 1. Criar base de dados local - [ ] - por realizar
