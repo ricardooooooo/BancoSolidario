@@ -1,4 +1,24 @@
-# BancoSolidario
+# Banco Solidario
 
-## LOGO.
-![Logo](https://media1.tenor.com/images/f26aec0a6bfdb3f1e23220539408556f/tenor.gif?itemid=19719206)
+## No que consiste:
+Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado do Cliente), neste caso consiste num projeto para um díspositivo móvel, que permite gerir o banco solidário.
+
+## Elementos de Equipa:
+* Jorick Meijde;
+* Ricardo Coelho;
+
+## Requísitos de Aplicação
+### Requisíto Mínimo
+* Por definir
+* Por definir
+* Por definir
+
+## Requisíto Avançado
+* Por definir
+* Por definir
+* Por definir
+
+## Lista de Tarefas
+1. Tarefa - [x] - concluída
+2. Tarefa - [ ] - por realizar
+3. Tarefa - [ ] - por realizar
