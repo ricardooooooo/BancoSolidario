@@ -12,7 +12,10 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 * Logins;
 * Criar um "home page"
 * Ver as Familias existentes(Página com os detalhes do mesmo);
+* Pesquisar pelo nome de Familia;
+* Página com detalhes da Família;
 * Ver as empresas;
+* Propor novas empresas;
 * Ver as doações já efetuadas;
 * Pedido de doação por parte do user;
 
