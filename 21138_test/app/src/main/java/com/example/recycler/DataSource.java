@@ -14,10 +14,10 @@ public class DataSource {
     }
 
     public static List<Company> getCompanyList(Context context) {
-        return AppDatabase.getInstance(context).getCountryDao().getAll();
+        return AppDatabase.getInstance(context).getCompanyDao().getAll();
     }
 
     public static Company getCompany(Context context, long id) {
-        return AppDatabase.getInstance(context).getCountryDao().getById(id);
+        return AppDatabase.getInstance(context).getCompanyDao().getById(id);
     }
 }

@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 @Database(entities = {Company.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    public abstract CompanyDao getCountryDao();
+    public abstract CompanyDao getCompanyDao();
 
     private static AppDatabase INSTANCE;
 
