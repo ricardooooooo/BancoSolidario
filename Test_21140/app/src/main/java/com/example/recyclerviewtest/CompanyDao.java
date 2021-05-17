@@ -14,8 +14,8 @@ public interface CompanyDao {
     @Query("SELECT * FROM Company")
     List<Company> getAll();
 
-    @Query("SELECT * FROM Company WHERE id = :id")
-    Company getById(long id);
+    @Query("SELECT * FROM Company WHERE codCompany = :codCompany")
+    Company getById(long codCompany);
 
     @Insert
     void add(Company country);

@@ -1,5 +1,7 @@
 package com.example.recyclerviewtest;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,19 +13,11 @@ public class DataSource {
 
     }
 
-    public static List<Company> getCompanyList() {
-      /*  if (companyList == null) {
-            companyList = new ArrayList<>();
-            companyList.add(new Company(1,"Continente","Rua das Galias","Beja",234567892));
-            companyList.add(new Company(2, "Loja da Arminda","Rua da Madeira","Beja",23232323));
-            companyList.add(new Company(3,"Azeveda","rua da banana","Lisboa",111111111));
-
-        }
-        return companyList;*/
-        return AppDatabase.getInstance(context).getCompanyDao().getById(id);
+    public static List<Company> getCompanyList(Context context) {
+        return AppDatabase.getInstance(context).getCompanyDao().getAll();
     }
 
-    public static Company getCompany(int position) {
-        return getCompanyList().get(position);
+    public static Company getCompany(Context context, long codCompany) {
+        return AppDatabase.getInstance(context).getCompanyDao().getById(codCompany);
     }
 }

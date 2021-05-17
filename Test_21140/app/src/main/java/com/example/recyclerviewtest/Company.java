@@ -1,16 +1,21 @@
 package com.example.recyclerviewtest;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Company {
+    @PrimaryKey(autoGenerate = true)
     private int codCompany;
     private String name;
-    private String adress;
+    private String address;
     private String local;
     private int phoneNum;
 
-    public Company(int codCompany,String name, String adress, String local, int phoneNum) {
+    public Company(int codCompany,String name, String address, String local, int phoneNum) {
         this.codCompany = codCompany;
         this.name = name;
-        this.adress = adress;
+        this.address = address;
         this.local = local;
         this.phoneNum = phoneNum;
     }
@@ -31,12 +36,12 @@ public class Company {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getLocal() {

@@ -49,7 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //                intent.putExtra(DetailsActivity.KEY_COMPANYPOSITION, position);
 //                RecyclerViewAdapter.this.context.startActivity(intent);
 
-                DetailsActivity.startActivity(RecyclerViewAdapter.this.context, position);
+                DetailsActivity.startActivity(RecyclerViewAdapter.this.context, company.getCodCompany());
             }
         });
     }
