@@ -25,10 +25,9 @@ public abstract class AppDatabase extends RoomDatabase {
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
-                            db.execSQL("INSERT INTO Company (name, flag) VALUES ('Austria', 'https://europa.eu/european-union/sites/europaeu/files/country_images/flags/flag-austria.jpg')");
-                            db.execSQL("INSERT INTO Company (name, flag) VALUES ('Belgium', 'https://europa.eu/european-union/sites/europaeu/files/country_images/flags/flag-belgium.jpg')");
-                            db.execSQL("INSERT INTO Company (name, flag) VALUES ('Bulgaria', 'https://europa.eu/european-union/sites/europaeu/files/country_images/flags/flag-bulgaria.jpg')");
-                            db.execSQL("INSERT INTO Company (name, flag) VALUES ('Croatia', 'https://europa.eu/european-union/sites/europaeu/files/country_images/flags/flag-croatia.jpg')");
+                            db.execSQL("INSERT INTO Company (name, adress, local, phoneNumber) VALUES ('Continente', 'R. Zeca Afonso, 7800-522 Beja', 'Beja', '214182183')");
+                            db.execSQL("INSERT INTO Company (name, adress, local, phoneNumber) VALUES ('Intermache', 'Av. Fialho de Almeida n78, 7800-395 Beja', 'Beja', '9314818318')");
+                            db.execSQL("INSERT INTO Company (name, adress, local, phoneNumber) VALUES ('Minipreco', 'Av. Gago Coutinho 3, 7900-110 Ferreira do Alentejo', 'Ferreira', '934593191')");
                         }
                     })
                     .build();

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    public static void startActivity(Context context, int position) {
+    public static void startActivity(Context context, long position) {
         Intent intent = new Intent(context, DetailsActivity.class);
         intent.putExtra(KEY_COMPANYPOSITION, position);
         context.startActivity(intent);
@@ -39,13 +39,14 @@ public class DetailsActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            int position = bundle.getInt(KEY_COMPANYPOSITION, -1);
+            long position = bundle.getLong(KEY_COMPANYPOSITION, -1);
             if (position == -1) {
                 Log.e(TAG, "Invalid position found!");
                 finish();
             }
 
-            this.company = DataSource.getCountry();
+            this.company = DataSource.getCompany(this, position);
+
             this.textViewName.setText(company.getName());
             this.textViewAdress.setText(company.getAdress());
             this.textViewLocal.setText(company.getLocal());

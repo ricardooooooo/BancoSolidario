@@ -17,7 +17,7 @@ public class DataSource {
         return AppDatabase.getInstance(context).getCountryDao().getAll();
     }
 
-    public static Company getCountry(Context context, long id) {
+    public static Company getCompany(Context context, long id) {
         return AppDatabase.getInstance(context).getCountryDao().getById(id);
     }
 }

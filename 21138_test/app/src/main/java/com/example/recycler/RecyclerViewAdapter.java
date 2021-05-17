@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 // Sempre que clicar no parent layout, este código é executado
                 Log.i("RecyclerViewAdapter", String.format("Clicked on: %s (position %d)", company.getName(), position));
-                DetailsActivity.startActivity(RecyclerViewAdapter.this.context, position);
+                DetailsActivity.startActivity(RecyclerViewAdapter.this.context, company.getId());
             }
         });
     }
