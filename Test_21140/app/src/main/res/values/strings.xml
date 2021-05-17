@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RecyclerViewTest</string>
+
+
+        <string-array name="transaction">
+            <item>Empresas</item>
+            <item>Familias</item>
+        </string-array>
+
+
+</resources>
