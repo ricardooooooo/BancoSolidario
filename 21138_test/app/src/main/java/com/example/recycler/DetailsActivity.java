@@ -44,7 +44,7 @@ public class DetailsActivity extends AppCompatActivity {
                 finish();
             }
 
-            this.company = DataSource.getCompany(this, position);
+            this.company = AppDatabase.getInstance(this).getCompanyDao().getById(position);
 
             this.textViewName.setText(company.getName());
             this.textViewAdress.setText(company.getAdress());

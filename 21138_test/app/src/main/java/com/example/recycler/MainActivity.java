@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        this.adapter = new RecyclerViewAdapter(this, DataSource.getCompanyList(this));
+        this.adapter = new RecyclerViewAdapter(this, AppDatabase.getInstance(this).getCompanyDao().getAll());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
