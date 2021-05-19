@@ -14,6 +14,9 @@ public interface CompanyDao {
         @Query("SELECT * FROM Company")
         List<Company> getAll();
 
+        @Query("SELECT * FROM Company WHERE name LIKE :search || '%'")
+        List<Company> getAllByText(String search);
+
         @Query("SELECT * FROM Company WHERE id = :id")
         Company getById(long id);
 

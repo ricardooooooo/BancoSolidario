@@ -13,6 +13,7 @@ import com.example.recycler.Company;
 import com.example.recycler.DetailsActivity;
 import com.example.recycler.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -23,6 +24,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter(Context context, List<Company> countryList) {
         this.context = context;
         this.companyList = countryList;
+    }
+
+    public void updateList(List<Company> newList) {
+        this.companyList = newList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -36,7 +42,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Company company = this.companyList.get(position);
         holder.getTextView().setText(company.getName());
-        // ImageView carregada através da biblioteca Glide
 
         holder.getParentLayout().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +71,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TextView getTextView() {
             return textView;
         }
-
 
         public View getParentLayout() { return parentLayout; }
     }
