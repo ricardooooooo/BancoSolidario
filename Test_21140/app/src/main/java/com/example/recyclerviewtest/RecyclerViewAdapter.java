@@ -19,14 +19,12 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private List<Company> companyList;
-    private List<Family>familyList;
+    private List<BaseDataClass> dataList;
     private Context context;
 
-    public RecyclerViewAdapter(Context context, List<Company> companyList,List<Family> familyList) {
+    public RecyclerViewAdapter(Context context, List<BaseDataClass> dataList) {
         this.context = context;
-        this.companyList = companyList;
-        this.familyList=familyList;
+        this.dataList = dataList;
     }
 
     @NonNull
@@ -38,26 +36,40 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Company company = this.companyList.get(position);
-        holder.getTextView().setText(company.getName());
+        BaseDataClass data = this.dataList.get(position);
+        holder.getTextView().setText(data.getName());
 
+       /* if (data instanceof Company) {
+            Company company = (Company) data;
+            company.getName();
+            company.getAddress();
+            company.getLocal();
+            company.getPhoneNum();
+        }else if(data instanceof Family){
+            Family family = (Family) data;
+            family.getName();
+            family.getAddress();
+            family.getLocal();
+            family.getPhoneNum();
+        }
+*/
 
 
         holder.getParentLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Sempre que clicar no parent layout, este código é executado
-                Log.i("RecyclerViewAdapter", String.format("Clicked on: %s (position %d)", company.getName(), position));
+                Log.i("RecyclerViewAdapter", String.format("Clicked on: %s (position %d)", data.getName(), position));
 //
 
-                DetailsActivity.startActivity(RecyclerViewAdapter.this.context, company.getCodCompany());
+                DetailsActivity.startActivity(RecyclerViewAdapter.this.context, data.getId());
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return this.companyList.size();
+        return this.dataList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -21,6 +23,10 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
+
+    private static final String KEY_TYPE ="TYPE";
+    private List<BaseDataClass> dataList;
 
     Spinner spinner;
     @Override
@@ -49,15 +55,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         RecyclerViewAdapter adapter1;
 
         //String text1 = spinner.getSelectedItem().toString();
-        String text = (String) spinner.getSelectedItem();
+        String type = (String) spinner.getSelectedItem();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        if(text.equals("Empresas")) {
-            adapter1 = new RecyclerViewAdapter(this, AppDatabase.getInstance(this).getCompanyDao().getAll());
+        if(type.equals("Empresas")) {
+            adapter1 = new RecyclerViewAdapter(this, new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getCompanyDao().getAll()));
 
-            Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+            Toast.makeText(parent.getContext(), type, Toast.LENGTH_SHORT).show();
         }else{
-            adapter1 = new RecyclerViewAdapter(this, AppDatabase.getInstance(this).getFamilyDao().getAll());
+            adapter1 = new RecyclerViewAdapter(this, new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getFamilyDao().getAll()));
+            DetailsActivity.Start(this,type);
         }
         recyclerView.setAdapter(adapter1);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

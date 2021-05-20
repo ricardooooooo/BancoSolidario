@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Family {
+public class Family extends BaseDataClass {
     @PrimaryKey(autoGenerate = true)
     private int codFamily;
     private String name;
@@ -18,6 +18,11 @@ public class Family {
         this.address = address;
         this.local = local;
         this.phoneNum = phoneNum;
+    }
+
+    @Override
+    public int getId() {
+        return this.getCodFamily();
     }
 
     public int getCodFamily() {

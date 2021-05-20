@@ -11,14 +11,17 @@ import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    public static void startActivity(Context context, int position) {
+    public static void startActivity(Context context, int position ) {
         Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra(KEY_CODCOMPANY, position);
+        intent.putExtra(KEY_ID, position);
+
         context.startActivity(intent);
     }
 
-    private static final String KEY_CODCOMPANY = "CODCOMPANY";
+    private static final String KEY_ID = "ID";
     private static final String TAG = "DetailsActivity";
+
+    private static final String KEY_TYPE = "TYPE";
 
 
     private TextView textViewName;
@@ -29,7 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView textViewPhone;
 
     private Company company;
-
+    private Family family;
 
 
     @Override
@@ -43,14 +46,32 @@ public class DetailsActivity extends AppCompatActivity {
         this.textViewPhone = findViewById(R.id.textViewPhone);
         this.textViewDescription = findViewById(R.id.textViewDescription);
 
+        Bundle typeBundle = getIntent().getExtras();
+
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            long position = bundle.getInt(KEY_CODCOMPANY, -1);
+            long position = bundle.getInt(KEY_ID, -1);
+            String type = typeBundle.getString(KEY_TYPE);
+            System.out.println(type);
             if (position == -1) {
                 Log.e(TAG, "Invalid position found!");
                 finish();
                 return;
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             this.company = AppDatabase.getInstance(this).getCompanyDao().getById(position);
 
@@ -66,5 +87,10 @@ public class DetailsActivity extends AppCompatActivity {
             Log.e(TAG, "No position specified!");
             finish();
         }
+    }
+    public static void Start(Context context, String type){
+        Intent intent = new Intent(context, DetailsActivity.class);
+        intent.putExtra(KEY_TYPE,type);
+        context.startActivity(intent);
     }
 }

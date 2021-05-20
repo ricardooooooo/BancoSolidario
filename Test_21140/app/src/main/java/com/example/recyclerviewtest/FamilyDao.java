@@ -12,7 +12,7 @@ import java.util.List;
 public interface FamilyDao {
 
     @Query("SELECT * FROM Family")
-    List<Company> getAll();
+    List<Family> getAll();
 
     @Query("SELECT * FROM Family WHERE codFamily = :codFamily")
     Family getById(long codFamily);
