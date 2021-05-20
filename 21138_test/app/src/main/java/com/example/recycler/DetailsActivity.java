@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,5 +56,40 @@ public class DetailsActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    public void done(View view) {
+        finish();
+    }
+
+    public void delete(View view) {
+        Bundle bundle = getIntent().getExtras();
+        long position = bundle.getLong(KEY_COMPANYPOSITION, -1);
+
+        this.company = AppDatabase.getInstance(this).getCompanyDao().getById(position);
+
+        AppDatabase.getInstance(this).getCompanyDao().delete(company);
+
+        finish();
+    }
+
+    public void edit(View view) {
+        String editCompany, editAddress, editLocal;
+        int editPhone;
+
+        this.textViewName = findViewById(R.id.textViewName);
+        this.textViewAdress = findViewById(R.id.textViewAdress);
+        this.textViewLocal = findViewById(R.id.textViewLocal);
+        this.textViewPhoneNumber = findViewById(R.id.textViewPhoneNumber);
+
+        Bundle bundle = getIntent().getExtras();
+        long position = bundle.getLong(KEY_COMPANYPOSITION, -1);
+
+        this.company = AppDatabase.getInstance(this).getCompanyDao().getById(position);
+
+        editCompany = String.valueOf(textViewName.getText());
+        editAddress = String.valueOf(textViewAdress.getText());
+        editLocal = String.valueOf(textViewLocal.getText());
+        editPhone = Integer.parseInt(String.valueOf(textViewPhoneNumber.getText()));
     }
 }

@@ -6,11 +6,11 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Company {
         @PrimaryKey(autoGenerate = true)
-        private int id;
-        private String name;
-        private String adress;
-        private String local;
-        private int phoneNumber;
+        private final int id;
+        private final String name;
+        private final String adress;
+        private final String local;
+        private final int phoneNumber;
 
         public Company(int id, String name, String adress, String local, int phoneNumber) {
             this.id = id;

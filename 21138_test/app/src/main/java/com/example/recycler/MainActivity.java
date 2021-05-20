@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SearchView;
 
 import java.util.List;
@@ -46,4 +48,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void newCompany(View view) {
+        Intent intent = new Intent(this, addNewCompany.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+         companyList = AppDatabase.getInstance(MainActivity.this).getCompanyDao().getAll();
+        adapter.updateList(companyList);
+    }
 }
