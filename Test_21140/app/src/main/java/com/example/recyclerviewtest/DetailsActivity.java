@@ -52,7 +52,7 @@ public class DetailsActivity extends AppCompatActivity {
                 return;
             }
 
-            this.company = DataSource.getCompany(this,position);
+            this.company = AppDatabase.getInstance(this).getCompanyDao().getById(position);
 
 
 

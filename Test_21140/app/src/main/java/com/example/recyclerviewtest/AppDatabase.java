@@ -25,15 +25,20 @@ public abstract class AppDatabase extends RoomDatabase {
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
-                            db.execSQL("INSERT INTO Company (codCompany, name, address, local, phoneNum) VALUES (1, 'Continente','Rua das Galias', 'Beja', 234567892)");
-                            db.execSQL("INSERT INTO Company (codCompany, name, address, local, phoneNum) VALUES (2, 'Loja da Arminda','Rua da Madeira', 'Beja', 23232323)");
-                            db.execSQL("INSERT INTO Company (codCompany, name, address, local, phoneNum) VALUES (3, 'Azeveda','Rua da Banana', 'Lisboa', 111111111)");
+                            //insert into companies
+                            db.execSQL("INSERT INTO Companies (codCompany, name, address, local, phoneNum) VALUES (1, 'Continente','Rua das Galias', 'Beja', 234567892)");
+                            db.execSQL("INSERT INTO Companies (codCompany, name, address, local, phoneNum) VALUES (2, 'Loja da Arminda','Rua da Madeira', 'Beja', 23232323)");
+                            db.execSQL("INSERT INTO Companies (codCompany, name, address, local, phoneNum) VALUES (3, 'Azeveda','Rua da Banana', 'Lisboa', 111111111)");
+
+                            //insert into families
+                            db.execSQL("INSERT INTO Families (codFamily, name, address, local, phoneNum) VALUES (1, 'Casa da Joana','Rua de Albuquerque', 'Lagoa', 2232233)");
+                            db.execSQL("INSERT INTO Families (codFamily, name, address, local, phoneNum) VALUES (2, 'Aladins','Rua dos Chuveiros', 'Vila Nova de Gaia', 44345)");
+                            db.execSQL("INSERT INTO Families (codFamily, name, address, local, phoneNum) VALUES (3, 'Azevedos','Rua da Banana', 'Lisboa', 111111111)");
+
                         }
                     })
                     .build();
         }
         return INSTANCE;
     }
-
-
 }

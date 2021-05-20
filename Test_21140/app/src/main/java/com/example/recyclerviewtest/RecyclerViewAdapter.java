@@ -20,11 +20,13 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private List<Company> companyList;
+    private List<Family>familyList;
     private Context context;
 
-    public RecyclerViewAdapter(Context context, List<Company> countryList) {
+    public RecyclerViewAdapter(Context context, List<Company> companyList,List<Family> familyList) {
         this.context = context;
-        this.companyList = countryList;
+        this.companyList = companyList;
+        this.familyList=familyList;
     }
 
     @NonNull
@@ -38,16 +40,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Company company = this.companyList.get(position);
         holder.getTextView().setText(company.getName());
-        // ImageView carregada através da biblioteca Glide
+
+
 
         holder.getParentLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Sempre que clicar no parent layout, este código é executado
                 Log.i("RecyclerViewAdapter", String.format("Clicked on: %s (position %d)", company.getName(), position));
-//                Intent intent = new Intent(RecyclerViewAdapter.this.context, DetailsActivity.class);
-//                intent.putExtra(DetailsActivity.KEY_COMPANYPOSITION, position);
-//                RecyclerViewAdapter.this.context.startActivity(intent);
+//
 
                 DetailsActivity.startActivity(RecyclerViewAdapter.this.context, company.getCodCompany());
             }
