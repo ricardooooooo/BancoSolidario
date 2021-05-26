@@ -1,4 +1,4 @@
-package com.example.recyclerviewtest;
+package com.example.projeto_PAC;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -16,6 +16,9 @@ public interface CompanyDao {
 
     @Query("SELECT * FROM Company WHERE codCompany = :codCompany")
     Company getById(long codCompany);
+
+    @Query("SELECT * FROM Company WHERE name LIKE :search || '%'")
+    List<Company> getAllByText(String search);
 
     @Insert
     void add(Company country);

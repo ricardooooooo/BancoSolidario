@@ -1,4 +1,4 @@
-package com.example.recyclerviewtest;
+package com.example.projeto_PAC;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

@@ -1,4 +1,4 @@
-package com.example.recyclerviewtest;
+package com.example.projeto_PAC;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -79,10 +79,6 @@ public class DetailsActivity extends AppCompatActivity {
                 this.textViewLocal.setText(family.getLocal());
                 this.textViewPhone.setText(String.valueOf(family.getPhoneNum()));
                 this.textViewDescription.setText("Histórico de Doações");
-
-
-
-
 
                // Log.e(TAG, "erro no typebundle!");
                // Log.e(TAG, "No position specified!");

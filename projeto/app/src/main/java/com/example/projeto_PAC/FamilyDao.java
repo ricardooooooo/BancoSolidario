@@ -1,4 +1,4 @@
-package com.example.recyclerviewtest;
+package com.example.projeto_PAC;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -16,6 +16,9 @@ public interface FamilyDao {
 
     @Query("SELECT * FROM Family WHERE codFamily = :codFamily")
     Family getById(long codFamily);
+
+    @Query("SELECT * FROM Family WHERE name LIKE :search || '%'")
+    List<Family> getAllByText(String search);
 
     @Insert
     void add(Family family);

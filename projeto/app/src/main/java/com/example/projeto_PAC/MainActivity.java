@@ -1,25 +1,21 @@
-package com.example.recyclerviewtest;
+package com.example.projeto_PAC;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.ResourceCursorAdapter;
+import android.widget.SearchView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -29,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private RecyclerViewAdapter adapter;
 
     Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +42,30 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            //Este aqui atualiza a clicar na lupa, mais otimizado pois não esta sempre a percorrer a lista
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            //Este aqui atualiza a cada mudança de letra, menos otimizado pois esta sempre a percorrer a lista
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                String type = (String) spinner.getSelectedItem();
+
+                if(type.equals("Empresas")) {
+                    MainActivity.this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(MainActivity.this).getCompanyDao().getAllByText(newText)));
+                    return true;
+                }else
+                {
+                    MainActivity.this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(MainActivity.this).getFamilyDao().getAllByText(newText)));
+                    return true;
+                }
+            }
+        });
 
     }
 
@@ -64,6 +85,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
    public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getFamilyDao().getAll()));
+        this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getCompanyDao().getAll()));
+    }
+
+    public void goToAddNew(View view) {
+        //TODO ver qual criar
+        Intent intent = new Intent(this, addNewCompany.class);
+        startActivity(intent);
     }
 }
 
