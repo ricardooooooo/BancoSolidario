@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -22,9 +23,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private List<BaseDataClass> dataList;
     private Context context;
 
-    public RecyclerViewAdapter(Context context, List<BaseDataClass> dataList) {
+    public RecyclerViewAdapter(Context context) {
         this.context = context;
-        this.dataList = dataList;
+        this.dataList = new ArrayList<>();
     }
 
     @NonNull
@@ -60,9 +61,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 // Sempre que clicar no parent layout, este código é executado
                 Log.i("RecyclerViewAdapter", String.format("Clicked on: %s (position %d)", data.getName(), position));
-//
 
-                DetailsActivity.startActivity(RecyclerViewAdapter.this.context, data.getId());
+                DetailsActivity.startActivity(RecyclerViewAdapter.this.context, data.getId(), data.getType());
             }
         });
     }
@@ -70,6 +70,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {
         return this.dataList.size();
+    }
+
+    public void updateList(ArrayList<BaseDataClass> newList) {
+        this.dataList = newList;
+        this.notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -11,16 +11,16 @@ import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    public static void startActivity(Context context, int position ) {
+    public static void startActivity(Context context, long id, String type) {
         Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra(KEY_ID, position);
-
+        intent.putExtra(KEY_ID, id);
+        intent.putExtra(KEY_TYPE, type);
         context.startActivity(intent);
     }
 
+
     private static final String KEY_ID = "ID";
     private static final String TAG = "DetailsActivity";
-
     private static final String KEY_TYPE = "TYPE";
 
 
@@ -46,51 +46,48 @@ public class DetailsActivity extends AppCompatActivity {
         this.textViewPhone = findViewById(R.id.textViewPhone);
         this.textViewDescription = findViewById(R.id.textViewDescription);
 
-        Bundle typeBundle = getIntent().getExtras();
-
-
         Bundle bundle = getIntent().getExtras();
+
         if (bundle != null) {
-            long position = bundle.getInt(KEY_ID, -1);
-            String type = typeBundle.getString(KEY_TYPE);
-            System.out.println(type);
-            if (position == -1) {
+            long id = bundle.getLong(KEY_ID, -1);
+            String type = bundle.getString(KEY_TYPE);
+
+            if (id == -1) {
                 Log.e(TAG, "Invalid position found!");
                 finish();
                 return;
             }
 
 
+            if (type.equals(BaseDataClass.TYPE_COMPANY)) {
+
+                this.company = AppDatabase.getInstance(this).getCompanyDao().getById(id);
+
+
+                this.textViewName.setText(company.getName());
+                this.textViewAddress.setText(company.getAddress());
+                this.textViewLocal.setText(company.getLocal());
+                this.textViewPhone.setText(String.valueOf(company.getPhoneNum()));
+                this.textViewDescription.setText("Histórico de Doações");
+            } else {
+
+                this.family = AppDatabase.getInstance(this).getFamilyDao().getById(id);
+
+
+                this.textViewName.setText(family.getName());
+                this.textViewAddress.setText(family.getAddress());
+                this.textViewLocal.setText(family.getLocal());
+                this.textViewPhone.setText(String.valueOf(family.getPhoneNum()));
+                this.textViewDescription.setText("Histórico de Doações");
 
 
 
 
 
-
-
-
-
-
-
-
-            this.company = AppDatabase.getInstance(this).getCompanyDao().getById(position);
-
-
-
-            this.textViewName.setText(company.getName());
-            this.textViewAddress.setText(company.getAddress());
-            this.textViewLocal.setText(company.getLocal());
-            this.textViewPhone.setText(String.valueOf(company.getPhoneNum()));
-            this.textViewDescription.setText("Histórico de Doações");
-
-        } else {
-            Log.e(TAG, "No position specified!");
-            finish();
+               // Log.e(TAG, "erro no typebundle!");
+               // Log.e(TAG, "No position specified!");
+               // finish();
+            }
         }
-    }
-    public static void Start(Context context, String type){
-        Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra(KEY_TYPE,type);
-        context.startActivity(intent);
     }
 }

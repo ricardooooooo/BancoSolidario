@@ -61,6 +61,11 @@ public class Family extends BaseDataClass {
         return phoneNum;
     }
 
+    @Override
+    public String getType() {
+        return BaseDataClass.TYPE_FAMILY;
+    }
+
     public void setPhoneNum(int phoneNum) {
         this.phoneNum = phoneNum;
     }

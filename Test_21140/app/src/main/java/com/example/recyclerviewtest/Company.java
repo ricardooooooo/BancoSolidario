@@ -61,6 +61,11 @@ public class Company extends BaseDataClass {
         return phoneNum;
     }
 
+    @Override
+    public String getType() {
+        return BaseDataClass.TYPE_COMPANY;
+    }
+
     public void setPhoneNum(int phoneNum) {
         this.phoneNum = phoneNum;
     }

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     private static final String KEY_TYPE ="TYPE";
-    private List<BaseDataClass> dataList;
+    private RecyclerViewAdapter adapter;
 
     Spinner spinner;
     @Override
@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        this.adapter = new RecyclerViewAdapter(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(this.adapter);
 
-
-
-//-----------------------------------
-         spinner = (Spinner) findViewById(R.id.spinner);
-        setContentView(R.layout.activity_main);
+        spinner = (Spinner) findViewById(R.id.spinner);
         spinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.transaction, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -51,23 +51,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-      //  String text = parent.getItemAtPosition(position).toString();
-        RecyclerViewAdapter adapter1;
-
-        //String text1 = spinner.getSelectedItem().toString();
         String type = (String) spinner.getSelectedItem();
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
         if(type.equals("Empresas")) {
-            adapter1 = new RecyclerViewAdapter(this, new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getCompanyDao().getAll()));
-
+            this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getCompanyDao().getAll()));
             Toast.makeText(parent.getContext(), type, Toast.LENGTH_SHORT).show();
         }else{
-            adapter1 = new RecyclerViewAdapter(this, new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getFamilyDao().getAll()));
-            DetailsActivity.Start(this,type);
+            this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getFamilyDao().getAll()));
         }
-        recyclerView.setAdapter(adapter1);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
