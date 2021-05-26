@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,10 +21,10 @@ public class DetailsActivity extends AppCompatActivity {
     private static final String KEY_COMPANYPOSITION = "COMPANYPOSITION";
     private static final String TAG = "Details Activity";
 
-    private TextView textViewName;
-    private TextView textViewAdress;
-    private TextView textViewLocal;
-    private TextView textViewPhoneNumber;
+    private EditText editName;
+    private EditText editAdress;
+    private EditText editLocal;
+    private EditText editPhone;
 
     private Company company;
 
@@ -32,10 +33,15 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        this.textViewName = findViewById(R.id.textViewName);
-        this.textViewAdress = findViewById(R.id.textViewAdress);
-        this.textViewLocal = findViewById(R.id.textViewLocal);
-        this.textViewPhoneNumber = findViewById(R.id.textViewPhoneNumber);
+        this.editName = findViewById(R.id.editCompany);
+        this.editAdress = findViewById(R.id.editAdress);
+        this.editLocal = findViewById(R.id.editLocal);
+        this.editPhone = findViewById(R.id.editPhone);
+
+        this.editName.setEnabled(false);
+        this.editAdress.setEnabled(false);
+        this.editLocal.setEnabled(false);
+        this.editPhone.setEnabled(false);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -47,19 +53,15 @@ public class DetailsActivity extends AppCompatActivity {
 
             this.company = AppDatabase.getInstance(this).getCompanyDao().getById(position);
 
-            this.textViewName.setText(company.getName());
-            this.textViewAdress.setText(company.getAdress());
-            this.textViewLocal.setText(company.getLocal());
-            this.textViewPhoneNumber.setText(String.valueOf(company.getPhoneNumber()));
+            this.editName.setText(company.getName());
+            this.editAdress.setText(company.getAdress());
+            this.editLocal.setText(company.getLocal());
+            this.editPhone.setText(String.valueOf(company.getPhoneNumber()));
         } else {
             Log.e(TAG, "No position specified!");
             finish();
         }
 
-    }
-
-    public void done(View view) {
-        finish();
     }
 
     public void delete(View view) {
@@ -74,22 +76,38 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     public void edit(View view) {
-        String editCompany, editAddress, editLocal;
-        int editPhone;
+        Button btnDone;
+        btnDone = findViewById(R.id.btnDone);
 
-        this.textViewName = findViewById(R.id.textViewName);
-        this.textViewAdress = findViewById(R.id.textViewAdress);
-        this.textViewLocal = findViewById(R.id.textViewLocal);
-        this.textViewPhoneNumber = findViewById(R.id.textViewPhoneNumber);
+        btnDone.setVisibility(View.VISIBLE);
 
-        Bundle bundle = getIntent().getExtras();
-        long position = bundle.getLong(KEY_COMPANYPOSITION, -1);
+        this.editName.setEnabled(true);
+        this.editAdress.setEnabled(true);
+        this.editLocal.setEnabled(true);
+        this.editPhone.setEnabled(true);
+    }
 
-        this.company = AppDatabase.getInstance(this).getCompanyDao().getById(position);
+    public void done(View view) {
+        String editCompany, editAddress, textEditLocal;
+        int editTextPhone;
 
-        editCompany = String.valueOf(textViewName.getText());
-        editAddress = String.valueOf(textViewAdress.getText());
-        editLocal = String.valueOf(textViewLocal.getText());
-        editPhone = Integer.parseInt(String.valueOf(textViewPhoneNumber.getText()));
+        this.editName = findViewById(R.id.editCompany);
+        this.editAdress = findViewById(R.id.editAdress);
+        this.editLocal = findViewById(R.id.editLocal);
+        this.editPhone = findViewById(R.id.editPhone);
+
+        editCompany = String.valueOf(editName.getText());
+        editAddress = String.valueOf(editAdress.getText());
+        textEditLocal = String.valueOf(editLocal.getText());
+        editTextPhone = Integer.parseInt(String.valueOf(editPhone.getText()));
+        
+        this.company.setName(editCompany);
+        this.company.setAdress(editAddress);
+        this.company.setLocal(textEditLocal);
+        this.company.setPhoneNumber(editTextPhone);
+
+        AppDatabase.getInstance(this).getCompanyDao().update(this.company);
+
+        finish();
     }
 }
