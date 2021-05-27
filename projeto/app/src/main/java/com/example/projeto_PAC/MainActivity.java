@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 import android.view.View;
@@ -19,7 +21,6 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-
 
     private static final String KEY_TYPE ="TYPE";
     private RecyclerViewAdapter adapter;
@@ -66,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
             }
         });
-
     }
 
 
@@ -90,15 +90,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onResume() {
         super.onResume();
+        String type = (String) spinner.getSelectedItem();
 
-        this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getFamilyDao().getAll()));
-        this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getCompanyDao().getAll()));
+        if(type.equals("Empresas")) {
+            this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getCompanyDao().getAll()));
+        }else{
+            this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getFamilyDao().getAll()));
+        }
     }
 
     public void goToAddNew(View view) {
-        //TODO ver qual criar
-        Intent intent = new Intent(this, addNewCompany.class);
-        startActivity(intent);
+        String type = (String) spinner.getSelectedItem();
+
+        if(type.equals("Empresas")) {
+            Intent intent = new Intent(this, addNewCompany.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent (this, addNewFamily.class);
+            startActivity(intent);
+        }
+
     }
 }
 

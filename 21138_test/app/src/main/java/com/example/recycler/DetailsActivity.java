@@ -61,7 +61,6 @@ public class DetailsActivity extends AppCompatActivity {
             Log.e(TAG, "No position specified!");
             finish();
         }
-
     }
 
     public void delete(View view) {

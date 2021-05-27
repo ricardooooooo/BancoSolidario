@@ -8,11 +8,12 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Company.class, Family.class}, version = 1)
+@Database(entities = {Company.class, Family.class, User.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract CompanyDao getCompanyDao();
     public abstract FamilyDao getFamilyDao();
+    public abstract UserDao getUserDao();
 
     private static AppDatabase INSTANCE;
 
@@ -36,6 +37,10 @@ public abstract class AppDatabase extends RoomDatabase {
                             db.execSQL("INSERT INTO Family (codFamily, name, address, local, phoneNum) VALUES (2, 'Aladins','Rua dos Chuveiros', 'Vila Nova de Gaia', 44345)");
                             db.execSQL("INSERT INTO Family (codFamily, name, address, local, phoneNum) VALUES (3, 'Azevedos','Rua da Banana', 'Lisboa', 111111111)");
 
+                            //insert into user
+                            db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (1, 'admin', 'admin', 'teste')");
+                            db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (2, 'monitor', 'monitor', 'teste')");
+                            db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (3, 'user', 'user', 'teste')");
                         }
                     })
                     .build();

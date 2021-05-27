@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addNewCompany">
+    tools:context=".addNewFamily">
 
     <EditText
         android:id="@+id/newFamily"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Company"
+        android:hint="Family"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/newAddressFamily"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
         android:clickable="true"
-        android:onClick="addNew"
+        android:onClick="addNewFamily"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
