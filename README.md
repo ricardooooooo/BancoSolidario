@@ -27,13 +27,11 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 
 ## Lista de Tarefas
 1. Levantamento de Requisítos - [x];
-2. Desenho de interfaces - [ ];
-3. Analisar a base de dados - [ ];
-4. Design no Android Studio - [ ];
+2. Desenho de interfaces - [x];
+3. Analisar a base de dados - [x];
+4. Design no Android Studio - [x];
 5. Elaboração do Projeto - [ ];
 6. Correção de Bugs - [ ];
-
-1. Criar base de dados local - [ ] - por realizar
-2. Criar uma main page de menus - [ ] - por realizar
-2. Tarefa - [x] - concluída
-3. Tarefa - [ ] - por realizar
+7. 
+8. Tarefa - [x] - concluída
+9. Tarefa - [ ] - por realizar
