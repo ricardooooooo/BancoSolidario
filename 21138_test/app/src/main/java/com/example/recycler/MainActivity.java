@@ -15,7 +15,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerViewAdapter adapter;
-    Context context;
     List<Company> companyList;
 
     @Override
