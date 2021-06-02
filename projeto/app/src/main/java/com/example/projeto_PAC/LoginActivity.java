@@ -30,13 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         name = String.valueOf(insertName.getText());
         password = String.valueOf(insertPassword.getText());
 
-<<<<<<< HEAD
-
-
-       
-=======
         user = (List<User>) AppDatabase.getInstance(this).getUserDao().getByText(name, password);
->>>>>>> bf4e3f3dd86eb4b6ca3aebf90bc14d0870ab8014
 
         if(user == null){
             Toast.makeText(this, "Erro, os seus dados estão errados!", Toast.LENGTH_LONG).show();
