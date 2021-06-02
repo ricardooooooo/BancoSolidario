@@ -19,10 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-<<<<<<< HEAD
-  
-=======
->>>>>>> 89644718ff30393dce35891473fb9c4785bbd28b
+
+
         EditText insertName, insertPassword;
         String name, password;
 
@@ -32,12 +30,8 @@ public class LoginActivity extends AppCompatActivity {
         name = String.valueOf(insertName.getText());
         password = String.valueOf(insertPassword.getText());
 
-<<<<<<< HEAD
 
         User user = AppDatabase.getInstance(this).getUserDao().login(name, password);
-=======
-        User user = AppDatabase.getInstance(this).getUserDao().login(name, password);
->>>>>>> 89644718ff30393dce35891473fb9c4785bbd28b
 
 
         if(user == null){
