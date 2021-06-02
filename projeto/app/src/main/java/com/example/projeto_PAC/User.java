@@ -11,15 +11,15 @@ public class User {
     private String password;
     private String local;
 
-    public User(int id, String userName, String password, String local) {
-        this.id = id;
+    public User(int codUser, String userName, String password, String local) {
+        this.codUser = codUser;
         this.userName = userName;
         this.password = password;
         this.local = local;
     }
 
-    public int getId() {
-        return id;
+    public int getCodUser() {
+        return codUser;
     }
 
     public String getUserName() {
