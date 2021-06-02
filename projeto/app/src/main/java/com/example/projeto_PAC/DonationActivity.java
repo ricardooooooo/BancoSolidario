@@ -1,8 +1,10 @@
 package com.example.projeto_PAC;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,24 +15,20 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class DonationActivity extends AppCompatActivity {
-
+public class DonationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final String KEY_TYPE ="TYPE";
     private RecyclerViewAdapter adapter;
 
     Spinner spinner;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donation);
+        setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        /*
         this.adapter = new RecyclerViewAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(this.adapter);
-         */
 
         spinner = (Spinner) findViewById(R.id.spinner);
         spinner = findViewById(R.id.spinner);
@@ -41,13 +39,13 @@ public class DonationActivity extends AppCompatActivity {
 
         SearchView searchView = findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            //Este aqui atualiza a clicar na lupa, mais otimizado pois não esta sempre a percorrer a lista
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
 
-            //Este aqui atualiza a cada mudança de letra, menos otimizado pois esta sempre a percorrer a lista
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 String type = (String) spinner.getSelectedItem();
@@ -92,4 +90,21 @@ public class DonationActivity extends AppCompatActivity {
             this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getFamilyDao().getAll()));
         }
     }
+
+    public void goToAddNew(View view) {
+        String type = (String) spinner.getSelectedItem();
+
+        if(type.equals("Empresas")) {
+            Intent intent = new Intent(this, addNewCompany.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent (this, addNewFamily.class);
+            startActivity(intent);
+        }
+
+    }
+
+
+
+
 }
