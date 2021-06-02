@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Erro, os seus dados estão errados!", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Login feito com sucesso!", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, MainMenu.class);
             startActivity(intent);
         }
     }

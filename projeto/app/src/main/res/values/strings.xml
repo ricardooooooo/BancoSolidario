@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecyclerViewTest</string>
+    <string name="app_name">Banco Solidário</string>
 
 
     <string-array name="transaction">
