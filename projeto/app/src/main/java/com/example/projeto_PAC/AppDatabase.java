@@ -8,12 +8,13 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Company.class, Family.class, User.class}, version = 1)
+@Database(entities = {Company.class, Family.class, User.class, Donation.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract CompanyDao getCompanyDao();
     public abstract FamilyDao getFamilyDao();
     public abstract UserDao getUserDao();
+    public abstract DonationDao getDonationDao();
 
     private static AppDatabase INSTANCE;
 
