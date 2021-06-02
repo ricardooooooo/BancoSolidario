@@ -2,13 +2,12 @@ package com.example.projeto_PAC;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        List<User> user;
         EditText insertName, insertPassword;
         String name, password;
 
@@ -30,7 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         name = String.valueOf(insertName.getText());
         password = String.valueOf(insertPassword.getText());
 
-        user = (List<User>) AppDatabase.getInstance(this).getUserDao().getByText(name, password);
+        User user = AppDatabase.getInstance(this).getUserDao().login(name, password);
+
 
         if(user == null){
             Toast.makeText(this, "Erro, os seus dados estão errados!", Toast.LENGTH_LONG).show();

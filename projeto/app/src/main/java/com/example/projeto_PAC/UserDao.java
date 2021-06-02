@@ -17,14 +17,14 @@ public interface UserDao {
         @Query("SELECT * FROM User WHERE codUser = :id")
         User getById(long id);
 
-        @Query("SELECT * FROM User WHERE userName = :name & password = :password")
-        User getByText(String name, String password);
+        @Query("SELECT * FROM User WHERE userName = :name AND password = :password")
+        User login(String name, String password);
 
         @Insert
         void add(User user);
 
         @Insert
-        void add(List<User> userList);
+        void add(List<User> userList); 
 
         @Delete
         void delete(User user);
