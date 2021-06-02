@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -18,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        User user1;
+        List<User> user;
         EditText insertName, insertPassword;
         String name, password;
 
@@ -28,14 +30,15 @@ public class LoginActivity extends AppCompatActivity {
         name = String.valueOf(insertName.getText());
         password = String.valueOf(insertPassword.getText());
 
+<<<<<<< HEAD
 
 
-        user1 = AppDatabase.getInstance(this).getUserDao().getByText(name, password);
-        //user1 = new User(1 ,"admin","admin","teste");
-        user1 = new User(1,name,password,"teste");
+       
+=======
+        user = (List<User>) AppDatabase.getInstance(this).getUserDao().getByText(name, password);
+>>>>>>> bf4e3f3dd86eb4b6ca3aebf90bc14d0870ab8014
 
-
-        if(user1 == null){
+        if(user == null){
             Toast.makeText(this, "Erro, os seus dados estão errados!", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Login feito com sucesso!", Toast.LENGTH_LONG).show();
