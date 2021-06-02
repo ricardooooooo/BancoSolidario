@@ -27,6 +27,7 @@ public class DonationActivity extends AppCompatActivity implements AdapterView.O
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         this.adapter = new RecyclerViewAdapter(this);
+        /*
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(this.adapter);
 
