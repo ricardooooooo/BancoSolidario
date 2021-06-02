@@ -25,7 +25,10 @@ public class User {
         this.password = password;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 89644718ff30393dce35891473fb9c4785bbd28b
     public int getCodUser() {
         return codUser;
     }

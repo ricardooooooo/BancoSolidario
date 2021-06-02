@@ -2,6 +2,7 @@ package com.example.projeto_PAC;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-       // List<User> user;
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 89644718ff30393dce35891473fb9c4785bbd28b
         EditText insertName, insertPassword;
         String name, password;
 
@@ -28,9 +32,12 @@ public class LoginActivity extends AppCompatActivity {
         name = String.valueOf(insertName.getText());
         password = String.valueOf(insertPassword.getText());
 
-     //   User user = new User(name,password);
+<<<<<<< HEAD
 
-       User user = AppDatabase.getInstance(this).getUserDao().login(name, password);
+        User user = AppDatabase.getInstance(this).getUserDao().login(name, password);
+=======
+        User user = AppDatabase.getInstance(this).getUserDao().login(name, password);
+>>>>>>> 89644718ff30393dce35891473fb9c4785bbd28b
 
 
         if(user == null){
