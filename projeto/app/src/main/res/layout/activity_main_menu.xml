@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDonations"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:onClick="goToDonations"
+
+        android:text="Doações"
+        app:layout_constraintBottom_toTopOf="@+id/btnCompanies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btnCompanies"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:onClick="goToCompaniesAndFamilies"
+        android:text="Empresas"
+        app:layout_constraintBottom_toTopOf="@+id/btnFamilies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDonations" />
+
+    <Button
+        android:id="@+id/btnFamilies"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:onClick="goToCompaniesAndFamilies"
+        android:text="Famílias"
+        app:layout_constraintBottom_toTopOf="@+id/btnTransactions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCompanies" />
+
+    <Button
+        android:id="@+id/btnTransactions"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Transações"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFamilies" />
+</androidx.constraintlayout.widget.ConstraintLayout>
