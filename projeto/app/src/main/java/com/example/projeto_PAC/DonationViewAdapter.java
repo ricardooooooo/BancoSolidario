@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DonationViewAdapter {
+public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapter.ViewHolder> {
     private List<Donation> donationList;
     private Context context;
 
