@@ -88,8 +88,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart(){
+        super.onStart();
+
         String type = (String) spinner.getSelectedItem();
 
         if(type.equals("Empresas")) {
