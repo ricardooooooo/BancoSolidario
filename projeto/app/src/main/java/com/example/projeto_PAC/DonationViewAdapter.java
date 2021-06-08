@@ -39,9 +39,9 @@ public class DonationViewAdapter {
             @Override
             public void onClick(View v) {
                 // Sempre que clicar no parent layout, este código é executado
-                Log.i("DonationViewAdapter", String.format("Clicked on: %s (position %d)", data.getName(), position));
+                Log.i("DonationViewAdapter", String.format("Clicked on: %s (position %d)", donation.getAmmount(), position));
 
-                DetailsActivity.startActivity(DonationViewAdapter.this.context, data.getId(), data.getType());
+               // DetailsDonation.startActivity(DonationViewAdapter.this.context, donation.getCodDonation());
             }
         });
     }
