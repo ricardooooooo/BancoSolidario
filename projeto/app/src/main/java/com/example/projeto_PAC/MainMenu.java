@@ -15,7 +15,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void goToDonations(View view){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, DonationActivity.class);
         startActivity(intent);
     }
     public void goToCompaniesAndFamilies(View view){
