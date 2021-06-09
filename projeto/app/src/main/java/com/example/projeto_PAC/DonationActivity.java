@@ -28,6 +28,7 @@ public class DonationActivity extends AppCompatActivity {
         if (userName.equals("monitor")){
             RecyclerView recyclerView = findViewById(R.id.recyclerViewDonation);
             this.adapter = new DonationViewAdapter(this, AppDatabase.getInstance(this).getDonationDao().getAll());
+            //TODO CORRIGIR
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(this.adapter);
         }else {
