@@ -23,14 +23,21 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
     @NonNull
     @Override
     public DonationViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_donation, parent, false);
         return new DonationViewAdapter.ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DonationViewAdapter.ViewHolder holder, int position) {
         Donation donation = this.donationList.get(position);
+<<<<<<< Updated upstream
         holder.getTextView().setText(Integer.toString(donation.amount));
+=======
+        int codCompany = donation.getCodCompany();
+        Company company = AppDatabase.getInstance(DonationViewAdapter.this.context).getCompanyDao().getById(codCompany);
+        holder.getTextView1().setText(Integer.toString(donation.ammount));
+        holder.getTextView().setText(company.getName());
+>>>>>>> Stashed changes
 
         holder.getParentLayout().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,16 +62,20 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final View parentLayout;
         private final TextView textView;
+        private final TextView textView1;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.textView = itemView.findViewById(R.id.textView);
+            this.textView1 = itemView.findViewById(R.id.textView1);
             this.parentLayout = itemView.findViewById(R.id.parentLayout);
         }
 
         public TextView getTextView() {
             return textView;
         }
+
+        public TextView getTextView1(){return textView1;}
 
         public View getParentLayout() { return parentLayout; }
     }
