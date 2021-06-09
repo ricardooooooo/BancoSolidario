@@ -30,14 +30,13 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
     @Override
     public void onBindViewHolder(@NonNull DonationViewAdapter.ViewHolder holder, int position) {
         Donation donation = this.donationList.get(position);
-<<<<<<< Updated upstream
+
         holder.getTextView().setText(Integer.toString(donation.amount));
-=======
-        int codCompany = donation.getCodCompany();
+
+        long codCompany = donation.getCodCompany();
         Company company = AppDatabase.getInstance(DonationViewAdapter.this.context).getCompanyDao().getById(codCompany);
-        holder.getTextView1().setText(Integer.toString(donation.ammount));
+        holder.getTextView1().setText(Integer.toString(donation.amount));
         holder.getTextView().setText(company.getName());
->>>>>>> Stashed changes
 
         holder.getParentLayout().setOnClickListener(new View.OnClickListener() {
             @Override

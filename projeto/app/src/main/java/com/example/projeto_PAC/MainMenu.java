@@ -22,10 +22,6 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-  /*  private void goToFamilies(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }*/
   public void goToTransactions(View view){
       Intent intent = new Intent(this, MainActivity.class);
       startActivity(intent);
