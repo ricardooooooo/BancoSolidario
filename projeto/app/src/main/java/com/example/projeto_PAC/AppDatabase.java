@@ -42,6 +42,11 @@ public abstract class AppDatabase extends RoomDatabase {
                             db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (1, 'admin', 'admin', 'teste')");
                             db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (2, 'monitor', 'monitor', 'teste')");
                             db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (3, 'user', 'user', 'teste')");
+
+
+
+
+
                         }
                     })
                     .build();
