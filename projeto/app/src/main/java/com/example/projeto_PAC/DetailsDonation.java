@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 public class DetailsDonation extends AppCompatActivity {
 
-    private static final String KEY_DONATIONPOSITION = "KEY_DONATIONPOSITION";
+    private static final String KEY_DONATION_ID = "KEY_DONATIONPOSITION";
 
     public static void startActivity(Context context, long id) {
         Intent intent = new Intent(context, DetailsDonation.class);
-        intent.putExtra(KEY_DONATIONPOSITION, id);
+        intent.putExtra(KEY_DONATION_ID, id);
         context.startActivity(intent);
     }
 
@@ -22,12 +22,12 @@ public class DetailsDonation extends AppCompatActivity {
 
 
     private Donation donation;
+    private Company company;
+    private Family family;
 
     private TextView txtDonator;
     private TextView txtReceiver;
     private TextView txtAmount;
-
-
 
 
     @Override
@@ -43,7 +43,7 @@ public class DetailsDonation extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            long id = bundle.getLong(KEY_DONATIONPOSITION, -1);
+            long id = bundle.getLong(KEY_DONATION_ID, -1);
 
             if (id == -1) {
                 Log.e(TAG, "Invalid position found!");
@@ -51,23 +51,15 @@ public class DetailsDonation extends AppCompatActivity {
                 return;
             }
 
+            this.donation = AppDatabase.getInstance(this).getDonationDao().getById(id);
+            this.company = AppDatabase.getInstance(this).getCompanyDao().getById(this.donation.getCodCompany());
+            this.family = AppDatabase.getInstance(this).getFamilyDao().getById(this.donation.getCodFamily());
 
 
-                this.donation = AppDatabase.getInstance(this).getDonationDao().getById(id);
+            this.txtAmount.setText(String.valueOf(this.donation.getAmount()));
+            this.txtReceiver.setText(String.valueOf(this.family.getName()));
+            this.txtDonator.setText(String.valueOf(this.company.getName()));
 
-             /*   this.editName.setText(company.getName());
-                this.editAddress.setText(company.getAddress());
-                this.editLocal.setText(company.getLocal());
-                this.editPhone.setText(String.valueOf(company.getPhoneNum()));
-                this.textViewDescription.setText("Histórico de Doações");
-
-
-*/
-
-
-            }
-
-
-
+        }
     }
 }
