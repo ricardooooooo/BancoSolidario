@@ -6,13 +6,13 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Family extends BaseDataClass {
     @PrimaryKey(autoGenerate = true)
-    private int codFamily;
+    private long codFamily;
     private String name;
     private String address;
     private String local;
     private int phoneNum;
 
-    public Family(int codFamily, String name, String address, String local, int phoneNum) {
+    public Family(long codFamily, String name, String address, String local, int phoneNum) {
         this.codFamily = codFamily;
         this.name = name;
         this.address = address;
@@ -21,11 +21,11 @@ public class Family extends BaseDataClass {
     }
 
     @Override
-    public int getId() {
+    public long getId() {
         return this.getCodFamily();
     }
 
-    public int getCodFamily() {
+    public long getCodFamily() {
         return codFamily;
     }
 

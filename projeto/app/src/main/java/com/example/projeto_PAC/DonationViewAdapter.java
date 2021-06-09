@@ -30,13 +30,13 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
     @Override
     public void onBindViewHolder(@NonNull DonationViewAdapter.ViewHolder holder, int position) {
         Donation donation = this.donationList.get(position);
-        holder.getTextView().setText(Integer.toString(donation.ammount));
+        holder.getTextView().setText(Integer.toString(donation.amount));
 
         holder.getParentLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Sempre que clicar no parent layout, este código é executado
-                Log.i("DonationViewAdapter", String.format("Clicked on: %s (position %d)", donation.getAmmount(), position));
+                Log.i("DonationViewAdapter", String.format("Clicked on: %s (position %d)", donation.getAmount(), position));
                 DetailsDonation.startActivity(DonationViewAdapter.this.context, donation.getCodDonation());
             }
         });

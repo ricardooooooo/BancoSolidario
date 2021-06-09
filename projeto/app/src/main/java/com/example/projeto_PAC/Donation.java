@@ -6,50 +6,50 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Donation {
     @PrimaryKey(autoGenerate = true)
-    int codDonation;
-    int codCompany;
-    int codFamily;
-    int ammount;
+    long codDonation;
+    long codCompany;
+    long codFamily;
+    int amount;
     boolean flg_Pendente;
 
-    public Donation(int codDonation, int codCompany, int codFamily, int ammount, boolean flg_Pendente) {
+    public Donation(long codDonation, long codCompany, long codFamily, int amount, boolean flg_Pendente) {
         this.codDonation = codDonation;
         this.codCompany = codCompany;
         this.codFamily = codFamily;
-        this.ammount = ammount;
+        this.amount = amount;
         this.flg_Pendente = flg_Pendente;
     }
 
-    public int getCodDonation() {
+    public long getCodDonation() {
         return codDonation;
     }
 
-    public void setCodDonation(int codDonation) {
+    public void setCodDonation(long codDonation) {
         this.codDonation = codDonation;
     }
 
-    public int getCodCompany() {
+    public long getCodCompany() {
         return codCompany;
     }
 
-    public void setCodCompany(int codCompany) {
+    public void setCodCompany(long codCompany) {
         this.codCompany = codCompany;
     }
 
-    public int getCodFamily() {
+    public long getCodFamily() {
         return codFamily;
     }
 
-    public void setCodFamily(int codFamily) {
+    public void setCodFamily(long codFamily) {
         this.codFamily = codFamily;
     }
 
-    public int getAmmount() {
-        return ammount;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setAmmount(int ammount) {
-        this.ammount = ammount;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public boolean isFlg_Pendente() {

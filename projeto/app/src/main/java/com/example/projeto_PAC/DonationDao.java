@@ -14,7 +14,7 @@ public interface DonationDao {
     List<Donation> getAll();
 
     @Query("SELECT * FROM Donation WHERE codDonation = :codDonation")
-    Donation getById(int codDonation);
+    Donation getById(long codDonation);
 
     @Insert
     void add(Donation donation);

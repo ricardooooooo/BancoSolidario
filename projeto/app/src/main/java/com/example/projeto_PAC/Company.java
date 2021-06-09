@@ -6,13 +6,13 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Company extends BaseDataClass {
     @PrimaryKey(autoGenerate = true)
-    private int codCompany;
+    private long codCompany;
     private String name;
     private String address;
     private String local;
     private int phoneNum;
 
-    public Company(int codCompany,String name, String address, String local, int phoneNum) {
+    public Company(long codCompany,String name, String address, String local, int phoneNum) {
         this.codCompany = codCompany;
         this.name = name;
         this.address = address;
@@ -21,15 +21,15 @@ public class Company extends BaseDataClass {
     }
 
     @Override
-    public int getId() {
-        return this.getCodCompany();
+    public long getId() {
+        return getCodCompany();
     }
 
-    public int getCodCompany() {
+    public long getCodCompany() {
         return codCompany;
     }
 
-    public void setCodCompany(int codCompany) {
+    public void setCodCompany(long codCompany) {
         this.codCompany = codCompany;
     }
 
