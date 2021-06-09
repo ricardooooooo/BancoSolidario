@@ -14,11 +14,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DonationActivity extends AppCompatActivity {
 
-    private RecyclerViewAdapter adapter;
-
+    private DonationViewAdapter adapter;
+    private List<Donation> donationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +27,19 @@ public class DonationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donation);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        this.adapter = new RecyclerViewAdapter(this);
-
+        this.adapter = new DonationViewAdapter(this, AppDatabase.getInstance(this).getDonationDao().getAll());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(this.adapter);
 
     }
 
 
-
     @Override
     protected void onResume() {
         super.onResume();
 
-         //   this.adapter.updateList(new ArrayList<BaseDataClass>(AppDatabase.getInstance(this).getDonationDao().getAll()));
+        donationList = AppDatabase.getInstance(this).getDonationDao().getAll();
+        this.adapter.updateList(donationList);
 
     }
 

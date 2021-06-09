@@ -9,17 +9,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapter.ViewHolder> {
     private List<Donation> donationList;
     private Context context;
 
-    public DonationViewAdapter(Context context) {
+    public DonationViewAdapter(Context context, List<Donation> donationList) {
         this.context = context;
-        this.donationList = new ArrayList<>();
+        this.donationList =  donationList;
     }
 
     @NonNull

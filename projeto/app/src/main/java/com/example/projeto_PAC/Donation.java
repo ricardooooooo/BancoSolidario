@@ -10,12 +10,14 @@ public class Donation {
     int codCompany;
     int codFamily;
     int ammount;
+    boolean flg_Pendente;
 
-    public Donation(int codDonation, int codCompany, int codFamily, int ammount) {
+    public Donation(int codDonation, int codCompany, int codFamily, int ammount, boolean flg_Pendente) {
         this.codDonation = codDonation;
         this.codCompany = codCompany;
         this.codFamily = codFamily;
         this.ammount = ammount;
+        this.flg_Pendente = flg_Pendente;
     }
 
     public int getCodDonation() {
@@ -50,5 +52,11 @@ public class Donation {
         this.ammount = ammount;
     }
 
+    public boolean isFlg_Pendente() {
+        return flg_Pendente;
+    }
 
+    public void setFlg_Pendente(boolean flg_Pendente) {
+        this.flg_Pendente = flg_Pendente;
+    }
 }
