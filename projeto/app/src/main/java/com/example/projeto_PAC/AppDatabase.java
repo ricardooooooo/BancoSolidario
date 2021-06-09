@@ -46,6 +46,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
                             //insert into donations
                             db.execSQL("INSERT INTO Donation (codDonation, amount, codCompany, codFamily, flg_Pendente) VALUES (1, 2000, 1, 1, 0)");
+                            db.execSQL("INSERT INTO Donation (codDonation, amount, codCompany, codFamily, flg_Pendente) VALUES (2, 4000, 1, 2, 1)");
 
                         }
                     })

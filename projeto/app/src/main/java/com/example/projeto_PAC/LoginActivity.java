@@ -16,11 +16,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Se ja´tá logado vai direto para a MainMenu
+        //if (SessionManager.getActiveSession(this) != -1) MainMenu.start(this);
+
     }
 
     public void login(View view) {
-
-
         EditText insertName, insertPassword;
         String name, password;
 
@@ -33,13 +34,12 @@ public class LoginActivity extends AppCompatActivity {
 
         User user = AppDatabase.getInstance(this).getUserDao().login(name, password);
 
-
         if(user == null){
             Toast.makeText(this, "Erro, os seus dados estão errados!", Toast.LENGTH_LONG).show();
         }else{
+            SessionManager.login(this, user.getCodUser());
             Toast.makeText(this, "Login feito com sucesso!", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, MainMenu.class);
-            startActivity(intent);
+            MainMenu.start(this);
         }
     }
 }
