@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,12 +33,12 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
     public void onBindViewHolder(@NonNull DonationViewAdapter.ViewHolder holder, int position) {
         Donation donation = this.donationList.get(position);
 
-        holder.getTextView().setText(Integer.toString(donation.amount));
-
         long codCompany = donation.getCodCompany();
         Company company = AppDatabase.getInstance(DonationViewAdapter.this.context).getCompanyDao().getById(codCompany);
         holder.getTextView1().setText(Integer.toString(donation.amount));
         holder.getTextView().setText(company.getName());
+
+        holder.checkbox.setChecked(donation.flg_Pendente);
 
         holder.getParentLayout().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +46,14 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
                 // Sempre que clicar no parent layout, este código é executado
                 Log.i("DonationViewAdapter", String.format("Clicked on: %s (position %d)", donation.getAmount(), position));
                 DetailsDonation.startActivity(DonationViewAdapter.this.context, donation.getCodDonation());
+            }
+        });
+
+        holder.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                donation.setFlg_Pendente(isChecked);
+                AppDatabase.getInstance(DonationViewAdapter.this.context).getDonationDao().update(donation);
             }
         });
     }
@@ -62,12 +72,14 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
         private final View parentLayout;
         private final TextView textView;
         private final TextView textView1;
+        private final CheckBox checkbox;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.textView = itemView.findViewById(R.id.textView);
             this.textView1 = itemView.findViewById(R.id.textView1);
             this.parentLayout = itemView.findViewById(R.id.parentLayout);
+            this.checkbox = itemView.findViewById(R.id.checkBox);
         }
 
         public TextView getTextView() {
@@ -77,5 +89,7 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
         public TextView getTextView1(){return textView1;}
 
         public View getParentLayout() { return parentLayout; }
+
+        public CheckBox getCheckbox(){return checkbox;}
     }
 }

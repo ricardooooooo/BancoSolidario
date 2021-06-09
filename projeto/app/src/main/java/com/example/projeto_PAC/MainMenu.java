@@ -22,26 +22,15 @@ public class MainMenu extends AppCompatActivity {
 
         int codUser = SessionManager.getActiveSession(this);
         if (codUser == -1) finish();
-        User user = AppDatabase.getInstance(this).getUserDao().getById(codUser);
-        String userName = user.getUserName();
-        if (userName.equals("monitor")){
-            Button btnPendente;
-            btnPendente = findViewById(R.id.btnPendente);
-            btnPendente.setVisibility(View.VISIBLE);
-        }
     }
 
     public void goToDonations(View view){
         Intent intent = new Intent(this, DonationActivity.class);
         startActivity(intent);
     }
+
     public void goToCompaniesAndFamilies(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-  public void goToTransactions(View view){
-      Intent intent = new Intent(this, MainActivity.class);
-      startActivity(intent);
-  }
-
 }

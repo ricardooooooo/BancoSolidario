@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         name = String.valueOf(insertName.getText());
         password = String.valueOf(insertPassword.getText());
 
-
         User user = AppDatabase.getInstance(this).getUserDao().login(name, password);
 
         if(user == null){
