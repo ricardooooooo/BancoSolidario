@@ -30,8 +30,8 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 2. Desenho de interfaces - [x];
 3. Analisar a base de dados - [x];
 4. Design no Android Studio - [x];
-5. Elaboração do Projeto - [ ];
-6. Correção de Bugs - [ ];
+5. Elaboração do Projeto - [x];
+6. Correção de Bugs - [x];
 7. 
 8. Tarefa - [x] - concluída
 9. Tarefa - [ ] - por realizar
