@@ -40,21 +40,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         BaseDataClass data = this.dataList.get(position);
         holder.getTextView().setText(data.getName());
 
-       /* if (data instanceof Company) {
-            Company company = (Company) data;
-            company.getName();
-            company.getAddress();
-            company.getLocal();
-            company.getPhoneNum();
-        }else if(data instanceof Family){
-            Family family = (Family) data;
-            family.getName();
-            family.getAddress();
-            family.getLocal();
-            family.getPhoneNum();
-        }
-*/
-
 
         holder.getParentLayout().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,4 +79,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public View getParentLayout() { return parentLayout; }
     }
+
+
+
+
+
+
+
 }
