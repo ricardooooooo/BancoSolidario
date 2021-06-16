@@ -15,6 +15,7 @@ import java.util.List;
 public class DonationActivity extends AppCompatActivity {
 
     private DonationViewAdapter adapter;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,20 +24,12 @@ public class DonationActivity extends AppCompatActivity {
 
         int codUser = SessionManager.getActiveSession(this);
         if (codUser == -1) finish();
-        User user = AppDatabase.getInstance(this).getUserDao().getById(codUser);
-        String typeUser = user.getType_User();
-        System.out.println(typeUser);
-        if (typeUser.equals("M") || typeUser.equals("A")){
-            RecyclerView recyclerView = findViewById(R.id.recyclerViewDonation);
-            this.adapter = new DonationViewAdapter(this, AppDatabase.getInstance(this).getDonationDao().getAll(), typeUser);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(this.adapter);
-        }else{
-            RecyclerView recyclerView = findViewById(R.id.recyclerViewDonation);
-            this.adapter = new DonationViewAdapter(this, AppDatabase.getInstance(this).getDonationDao().getAutorizado(), typeUser);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(this.adapter);
-        }
+        this.user = AppDatabase.getInstance(this).getUserDao().getById(codUser);
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewDonation);
+        this.adapter = new DonationViewAdapter(this, this.user.getTypeUser());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(this.adapter);
     }
 
     @Override
@@ -45,9 +38,8 @@ public class DonationActivity extends AppCompatActivity {
 
         int codUser = SessionManager.getActiveSession(this);
         if (codUser == -1) finish();
-        User user = AppDatabase.getInstance(this).getUserDao().getById(codUser);
-        String typeUser = user.getUserName();
-        if (typeUser.equals("M") || typeUser.equals("A")){
+
+        if (this.user.getTypeUser() == 1 || this.user.getTypeUser() == 2){
             List<Donation> newDonation = AppDatabase.getInstance(this).getDonationDao().getAll();
             this.adapter.updateList(newDonation);
         }else {

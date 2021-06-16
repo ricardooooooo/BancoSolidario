@@ -11,17 +11,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapter.ViewHolder> {
-    private final String typeUser;
+    private final int typeUser;
     private List<Donation> donationList;
     private Context context;
 
-    public DonationViewAdapter(Context context, List<Donation> donationList, String type_user) {
+    public DonationViewAdapter(Context context, int typeUser) {
         this.context = context;
-        this.donationList =  donationList;
-        this.typeUser = type_user;
+        this.donationList =  new ArrayList<>();
+        this.typeUser = typeUser;
     }
 
     @NonNull
@@ -59,8 +61,8 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
             }
         });
 
-        if (!this.typeUser.equals("M") || this.typeUser.equals("A")) {
-            holder.checkbox.setVisibility(View.INVISIBLE);
+        if (this.typeUser == 1 || this.typeUser == 2) {
+            holder.checkbox.setVisibility(View.VISIBLE);
         }
     }
 
