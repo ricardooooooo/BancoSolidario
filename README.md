@@ -20,7 +20,7 @@ Este repositorio é onde estara alocado o projeto de PAC(Programação do Lado d
 * Pedido de doação por parte do user;
 
 ## Requisíto Avançado
-* Aceitar esse pedido sendo monitor local.
+* Aceitar esse pedido sendo monitor.
 * Editar as familias
 * Editar as Empresas
 * Editar as doações por pedido;
