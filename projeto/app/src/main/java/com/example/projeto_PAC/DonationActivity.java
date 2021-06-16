@@ -15,7 +15,6 @@ import java.util.List;
 public class DonationActivity extends AppCompatActivity {
 
     private DonationViewAdapter adapter;
-    private List<Donation> donationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,22 +24,16 @@ public class DonationActivity extends AppCompatActivity {
         int codUser = SessionManager.getActiveSession(this);
         if (codUser == -1) finish();
         User user = AppDatabase.getInstance(this).getUserDao().getById(codUser);
-        String userName = user.getUserName();
-        if (userName.equals("monitor")){
+        String typeUser = user.getType_User();
+        System.out.println(typeUser);
+        if (typeUser.equals("M") || typeUser.equals("A")){
             RecyclerView recyclerView = findViewById(R.id.recyclerViewDonation);
-            this.adapter = new DonationViewAdapter(this, AppDatabase.getInstance(this).getDonationDao().getAll());
+            this.adapter = new DonationViewAdapter(this, AppDatabase.getInstance(this).getDonationDao().getAll(), typeUser);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(this.adapter);
         }else{
-            //Isto era supossto ocultar a checkbox, para o user não poder editar, mas dá erro.
-            /*CheckBox checkbox;
-            checkbox = findViewById(R.id.checkBox);
-            checkbox.setClickable(false);
-            checkbox.setVisibility(View.INVISIBLE);
-            */
-
             RecyclerView recyclerView = findViewById(R.id.recyclerViewDonation);
-            this.adapter = new DonationViewAdapter(this, AppDatabase.getInstance(this).getDonationDao().getAutorizado());
+            this.adapter = new DonationViewAdapter(this, AppDatabase.getInstance(this).getDonationDao().getAutorizado(), typeUser);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(this.adapter);
         }
@@ -53,8 +46,8 @@ public class DonationActivity extends AppCompatActivity {
         int codUser = SessionManager.getActiveSession(this);
         if (codUser == -1) finish();
         User user = AppDatabase.getInstance(this).getUserDao().getById(codUser);
-        String userName = user.getUserName();
-        if (userName.equals("monitor")){
+        String typeUser = user.getUserName();
+        if (typeUser.equals("M") || typeUser.equals("A")){
             List<Donation> newDonation = AppDatabase.getInstance(this).getDonationDao().getAll();
             this.adapter.updateList(newDonation);
         }else {

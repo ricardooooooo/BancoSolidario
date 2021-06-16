@@ -39,10 +39,10 @@ public abstract class AppDatabase extends RoomDatabase {
                             db.execSQL("INSERT INTO Family (codFamily, name, address, local, phoneNum) VALUES (3, 'Azevedos','Rua da Banana', 'Lisboa', 111111111)");
 
                             //insert into user
-                            db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (1, 'admin', 'admin', 'teste')");
-                            db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (2, 'monitor', 'monitor', 'teste')");
-                            db.execSQL("INSERT INTO User (codUser, userName, password, local) VALUES (3, 'user', 'user', 'teste')");
-
+                            db.execSQL("INSERT INTO User (codUser, userName, password, local, type_user) VALUES (1, 'admin', 'admin', 'teste', 'A')");
+                            db.execSQL("INSERT INTO User (codUser, userName, password, local, type_user) VALUES (2, 'monitor', 'monitor', 'teste', 'M')");
+                            db.execSQL("INSERT INTO User (codUser, userName, password, local, type_user) VALUES (3, 'user', 'user', 'teste', 'U')");
+                            db.execSQL("INSERT INTO User (codUser, userName, password, local, type_user) VALUES (4, 'diogo', 'diogo', 'teste', 'M')");
 
                             //insert into donations
                             db.execSQL("INSERT INTO Donation (codDonation, amount, codCompany, codFamily, flg_Pendente) VALUES (1, 2000, 1, 1, 0)");

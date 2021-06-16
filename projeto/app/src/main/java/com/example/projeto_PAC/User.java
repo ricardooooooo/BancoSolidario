@@ -11,12 +11,14 @@ public class User {
     private String userName;
     private String password;
     private String local;
+    private String type_User;
 
-    public User(int codUser, String userName, String password, String local) {
+    public User(int codUser, String userName, String password, String local, String type_User) {
         this.codUser = codUser;
         this.userName = userName;
         this.password = password;
         this.local = local;
+        this.type_User = type_User;
     }
 
     @Ignore
@@ -24,7 +26,6 @@ public class User {
         this.userName = userName;
         this.password = password;
     }
-
 
     public int getCodUser() {
         return codUser;
@@ -40,6 +41,14 @@ public class User {
 
     public String getLocal() {
         return local;
+    }
+
+    public String getType_User() {
+        return type_User;
+    }
+
+    public void setType_User(String type_User) {
+        this.type_User = type_User;
     }
 }
 

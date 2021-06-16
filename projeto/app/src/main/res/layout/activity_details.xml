@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DetailsActivity">
 
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="333dp"
-        android:layout_height="74dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnDelete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPhone"
-        tools:text="Histório de Doações...." />
-
     <EditText
         android:id="@+id/editName"
         android:layout_width="0dp"
@@ -27,7 +16,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textId" />
 
     <EditText
         android:id="@+id/editAddress"
@@ -60,7 +49,7 @@
         android:ems="10"
         android:hint="Phone"
         android:inputType="number|phone"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
+        app:layout_constraintBottom_toTopOf="@+id/btnDelete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editLocal" />
@@ -74,7 +63,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/editPhone" />
 
     <Button
         android:id="@+id/btnEdit"
@@ -97,5 +86,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEdit" />
+
+    <TextView
+        android:id="@+id/textId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Id"
+        app:layout_constraintBottom_toTopOf="@+id/editName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

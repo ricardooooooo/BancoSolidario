@@ -27,15 +27,13 @@ public class DetailsActivity extends AppCompatActivity {
     private static final String TAG = "DetailsActivity";
     private static final String KEY_TYPE = "TYPE";
 
-
+    private TextView textID;
     private EditText editName;
     private EditText editAddress;
     private EditText editLocal;
     private EditText editPhone;
 
     Button btnDone;
-
-    private TextView textViewDescription;
     private Company company;
     private Family family;
 
@@ -49,11 +47,11 @@ public class DetailsActivity extends AppCompatActivity {
 
         btnDone.setVisibility(View.INVISIBLE);
 
+        this.textID = findViewById(R.id.textId);
         this.editName = findViewById(R.id.editName);
         this.editAddress = findViewById(R.id.editAddress);
         this.editLocal = findViewById(R.id.editLocal);
         this.editPhone = findViewById(R.id.editPhone);
-        this.textViewDescription = findViewById(R.id.textViewDescription);
 
         editName.setEnabled(false);
         editAddress.setEnabled(false);
@@ -75,20 +73,20 @@ public class DetailsActivity extends AppCompatActivity {
 
                 this.company = AppDatabase.getInstance(this).getCompanyDao().getById(id);
 
+                this.textID.setText(String.valueOf(company.getId()));
                 this.editName.setText(company.getName());
                 this.editAddress.setText(company.getAddress());
                 this.editLocal.setText(company.getLocal());
                 this.editPhone.setText(String.valueOf(company.getPhoneNum()));
-                this.textViewDescription.setText("Histórico de Doações");
             } else {
 
                 this.family = AppDatabase.getInstance(this).getFamilyDao().getById(id);
 
+                this.textID.setText(String.valueOf(family.getId()));
                 this.editName.setText(family.getName());
                 this.editAddress.setText(family.getAddress());
                 this.editLocal.setText(family.getLocal());
                 this.editPhone.setText(String.valueOf(family.getPhoneNum()));
-                this.textViewDescription.setText("Histórico de Doações");
 
                 // Log.e(TAG, "erro no typebundle!");
                 // Log.e(TAG, "No position specified!");

@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapter.ViewHolder> {
+    private final String typeUser;
     private List<Donation> donationList;
     private Context context;
 
-    public DonationViewAdapter(Context context, List<Donation> donationList) {
+    public DonationViewAdapter(Context context, List<Donation> donationList, String type_user) {
         this.context = context;
         this.donationList =  donationList;
+        this.typeUser = type_user;
     }
 
     @NonNull
@@ -56,6 +58,10 @@ public class DonationViewAdapter extends RecyclerView.Adapter<DonationViewAdapte
                 AppDatabase.getInstance(DonationViewAdapter.this.context).getDonationDao().update(donation);
             }
         });
+
+        if (!this.typeUser.equals("M") || this.typeUser.equals("A")) {
+            holder.checkbox.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
