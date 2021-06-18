@@ -12,6 +12,7 @@
         android:layout_height="22dp"
         android:layout_marginTop="200dp"
         android:text="Amount"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:text="Doadores :"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAmount" />
 
@@ -34,7 +36,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
-        android:text="Familia"
+        android:text="Familia :"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -42,11 +45,13 @@
         android:id="@+id/txtReceiver"
         android:layout_width="169dp"
         android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:text="txtReceiver"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/txtDonator" />
 
     <TextView
@@ -57,6 +62,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:text="txtDonator"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/txtAmount" />
